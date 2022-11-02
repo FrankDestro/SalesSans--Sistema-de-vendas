@@ -1,0 +1,80 @@
+.navbar {
+  height: 60px;
+  box-shadow: 7px 7px 8px #cfcece;
+}
+
+.profile-photo-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-photo-container p {
+  color: #878484;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.container-logo, .container-logo:hover {
+  color: #878484;
+  display: flex;
+  align-items: center;
+}
+
+.container-logo img {
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px 0px 30px;
+}
+
+.container-user-navbar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.main-menu {
+  display: flex;
+  font-size: 18px;
+  width: 80px;
+  justify-content: space-between;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 90px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 220px;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 0px;
+  margin-left: 50px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 0px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  border-left: 2px solid rgb(225, 156, 8);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

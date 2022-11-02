@@ -1,0 +1,62 @@
+/* card principal */
+.card-login {
+  width: 551px;
+  height: 720px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 90px;
+  text-align: center;
+  padding: 0;
+}
+
+/* card top logo */
+.container-logo-login {
+  padding: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.container-logo-login img {
+  border-radius: 5px 5px 0 0;
+  width: 50%;
+}
+
+/* card botton content */
+.container-content-login {
+  padding: 30px 70px 30px 70px;
+}
+
+.container-content-login h1 {
+  margin-bottom: 40px;
+}
+
+.login-link-recover {
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #000000;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.login-link-recover:hover {
+  color: rgb(225, 156, 8);
+}
+
+.login-submit {
+  margin-bottom: 10px;
+}
+
+.login-submit button {
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(225, 156, 8);
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 80px;
+}
+
+.login-submit button:hover {
+  background-color: rgb(225, 113, 8);
+}
