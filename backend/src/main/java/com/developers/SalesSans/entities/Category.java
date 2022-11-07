@@ -2,18 +2,12 @@ package com.developers.SalesSans.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_category")
@@ -33,6 +27,9 @@ public class Category implements Serializable {
 
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
+
+	@OneToMany(mappedBy = "category")
+	private List<SubCategory> subCategories = new ArrayList<>();
 	
 	public Category() {
 	}
@@ -79,7 +76,11 @@ public class Category implements Serializable {
 	public Set<Product> getProducts() {
 		return products;
 	}
-	
+
+	public List<SubCategory> getSubCategories() {
+		return subCategories;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

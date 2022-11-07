@@ -49,7 +49,7 @@
   align-items: center;
   width: 150px;
   height: 40px;
-  background-color: rgb(225, 156, 8);
+  background-color: rgb(241, 39, 29);
   border: 0;
   border-radius: 5px;
   color: white;
@@ -58,5 +58,5 @@
 }
 
 .login-submit button:hover {
-  background-color: rgb(225, 113, 8);
+  background-color: rgb(245, 104, 97);
 }

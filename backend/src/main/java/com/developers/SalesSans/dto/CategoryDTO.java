@@ -1,6 +1,8 @@
 package com.developers.SalesSans.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.developers.SalesSans.entities.Category;
 
@@ -9,7 +11,9 @@ public class CategoryDTO implements Serializable {
 
 	private Long id;
 	private String name;
-	
+
+	Set<SubCategoryDTO> subcategories = new HashSet<>();
+
 	public CategoryDTO() {
 	}
 
@@ -21,6 +25,7 @@ public class CategoryDTO implements Serializable {
 	public CategoryDTO(Category entity) {
 		this.id = entity.getId();
 		this.name = entity.getName();
+		entity.getSubCategories().forEach(subcat -> this.subcategories.add(new SubCategoryDTO(subcat)));
 	}
 
 	public Long getId() {
@@ -37,5 +42,9 @@ public class CategoryDTO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<SubCategoryDTO> getSubcategories() {
+		return subcategories;
 	}
 }
