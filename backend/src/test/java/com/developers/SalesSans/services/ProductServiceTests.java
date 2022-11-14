@@ -23,13 +23,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.developers.SalesSans.entities.Product;
+import com.developers.SalesSans.entities.Produto;
 import com.developers.SalesSans.repositories.ProductRepository;
 import com.developers.SalesSans.services.exceptions.DatabaseException;
 import com.developers.SalesSans.services.exceptions.ResourceNotFoundException;
 
 @ExtendWith(SpringExtension.class)
-public class ProductServiceTests {
+public class ProdutoServiceTests {
 
 	@InjectMocks
 	private ProductService service;
@@ -40,22 +40,22 @@ public class ProductServiceTests {
 	private long existingId;
 	private long nonExistingId;
 	private long dependentId;
-	private Product product;
-	private PageImpl<Product> page;
+	private Produto produto;
+	private PageImpl<Produto> page;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		existingId = 1L;
 		nonExistingId = 2L;
 		dependentId = 3L;
-		product = Factory.createProduct();
-		page = new PageImpl<>(List.of(product));
+		produto = Factory.createProduct();
+		page = new PageImpl<>(List.of(produto));
 		
 		Mockito.when(repository.findAll((Pageable)any())).thenReturn(page);
 		
-		Mockito.when(repository.save(any())).thenReturn(product);
+		Mockito.when(repository.save(any())).thenReturn(produto);
 		
-		Mockito.when(repository.findById(existingId)).thenReturn(Optional.of(product));
+		Mockito.when(repository.findById(existingId)).thenReturn(Optional.of(produto));
 		Mockito.when(repository.findById(nonExistingId)).thenReturn(Optional.empty());
 		
 		Mockito.when(repository.find(any(), any(), any())).thenReturn(page);

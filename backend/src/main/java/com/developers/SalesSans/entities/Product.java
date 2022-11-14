@@ -2,29 +2,22 @@ package com.developers.SalesSans.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_product")
-public class Product implements Serializable {
+public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	private Double price;
@@ -38,17 +31,28 @@ public class Product implements Serializable {
 		joinColumns = @JoinColumn(name = "product_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id"))	
 	Set<Category> categories = new HashSet<>();
+
+	@OneToMany(mappedBy = "id.product")
+	private Set<OrderItem> items = new HashSet<>();
 	
-	public Product() {
+	public Produto() {
 	}
 
-	public Product(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+	public Produto(Long id, String name, String description, Double price, String imgUrl, Instant date) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.imgUrl = imgUrl;
 		this.date = date;
+	}
+
+	public List<Order> getOrders(){
+		List<Order> list = new ArrayList<>();
+		for (OrderItem x : items) {
+			list.add(x.getOrder());
+		}
+		return list;
 	}
 
 	public Long getId() {
@@ -103,6 +107,14 @@ public class Product implements Serializable {
 		return categories;
 	}
 
+	public Set<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<OrderItem> items) {
+		this.items = items;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -119,7 +131,7 @@ public class Product implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		Produto other = (Produto) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

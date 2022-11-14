@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.developers.SalesSans.entities.Product;
+import com.developers.SalesSans.entities.Produto;
 import com.developers.SalesSans.tests.Factory;
 
 @DataJpaTest
-public class ProductRepositoryTests {
+public class ProdutoRepositoryTests {
 
 	@Autowired
 	private ProductRepository repository;
@@ -34,16 +34,16 @@ public class ProductRepositoryTests {
 	@Test
 	public void saveShouldPersistWithAutoincrementWhenIdIsNull() {
 
-		Product product = Factory.createProduct();
-		product.setId(null);
+		Produto produto = Factory.createProduct();
+		produto.setId(null);
 		
-		product = repository.save(product);
-		Optional<Product> result = repository.findById(product.getId());
+		produto = repository.save(produto);
+		Optional<Produto> result = repository.findById(produto.getId());
 		
-		Assertions.assertNotNull(product.getId());
-		Assertions.assertEquals(countTotalProducts + 1L, product.getId());
+		Assertions.assertNotNull(produto.getId());
+		Assertions.assertEquals(countTotalProducts + 1L, produto.getId());
 		Assertions.assertTrue(result.isPresent());
-		Assertions.assertSame(result.get(), product);
+		Assertions.assertSame(result.get(), produto);
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class ProductRepositoryTests {
 		
 		repository.deleteById(existingId);
 
-		Optional<Product> result = repository.findById(existingId);
+		Optional<Produto> result = repository.findById(existingId);
 		
 		Assertions.assertFalse(result.isPresent());
 	}

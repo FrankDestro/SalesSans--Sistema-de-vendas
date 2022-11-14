@@ -16,7 +16,7 @@ import com.developers.SalesSans.services.exceptions.ResourceNotFoundException;
 
 @SpringBootTest
 @Transactional
-public class ProductServiceIT {
+public class ProdutoServiceIT {
 
 	@Autowired
 	private ProductService service;
